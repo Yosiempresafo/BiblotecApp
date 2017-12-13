@@ -49,10 +49,35 @@ public class VerLibro extends AppCompatActivity {
 
     public void prestamo(View v) {
 
-        //Producto producto = new Producto(getBaseContext());
-        //producto.open();
-        //producto.actualizarProducto(id, nombre.getText().toString(), precio.getText().toString(), descripcion.getText().toString(), marca.getText().toString(), stock.getText().toString(), descripcion.getText().toString());
-        Toast.makeText(getBaseContext(), "Préstamo completado exitosamente.", Toast.LENGTH_LONG).show();
+        Libro libro = new Libro(getBaseContext());
+        libro.open();
+        int st = Integer.parseInt(stock.getText().toString());
+        if (st > 0){
+            st = st -1;
+            libro.actualizarLibro(id, nombre.getText().toString(), tipo.getText().toString(), editorial.getText().toString(), anio.getText().toString(), autor.getText().toString(), estado.getText().toString(), prestamo.getText().toString(), devolucion.getText().toString(), Integer.toString(st));
+
+            //Producto producto = new Producto(getBaseContext());
+            //producto.open();
+            //producto.actualizarProducto(id, nombre.getText().toString(), precio.getText().toString(), descripcion.getText().toString(), marca.getText().toString(), stock.getText().toString(), descripcion.getText().toString());
+            Toast.makeText(getBaseContext(), "Préstamo completado exitosamente.", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(VerLibro.this, Prestamo.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+            finish();
+        }else {
+            Toast.makeText(getBaseContext(), "El libro no está disponible.", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    public void devolucion(View v) {
+        Libro libro = new Libro(getBaseContext());
+        libro.open();
+        int st = Integer.parseInt(stock.getText().toString());
+        st = st + 1;
+        libro.actualizarLibro(id, nombre.getText().toString(), tipo.getText().toString(), editorial.getText().toString(), anio.getText().toString(), autor.getText().toString(), estado.getText().toString(), prestamo.getText().toString(), devolucion.getText().toString(), Integer.toString(st));
+
+        Toast.makeText(getBaseContext(), "Devolución completada exitosamente.", Toast.LENGTH_LONG).show();
         Intent i = new Intent(VerLibro.this, Prestamo.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);

@@ -98,7 +98,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="188dp" />
+            android:layout_height="137dp" />
 
         <Button
             android:id="@+id/prestamoBtn"
@@ -112,7 +112,17 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="11dp" />
+            android:layout_height="18dp" />
+
+        <Button
+            android:id="@+id/devolucionBtn"
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/teal"
+            android:onClick="devolucion"
+            android:text="Devolución"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </ScrollView>
