@@ -69,7 +69,7 @@ public class Libro {
         values.put(Database.LIBRO_ESTADO, estado);
         values.put(Database.LIBRO_PRESTAMO, prestamo);
         values.put(Database.LIBRO_DEVOLUCION, devolucion);
-        values.put(Database.LIBRO_STOCK, stock);
+        values.put(Database.LIBRO_STOCK, Integer.parseInt(stock));
         //Con el método insert agregamos los valores a la BD
         //Además, el método "insert" regresa el id, por eso lo almacenamos
         long insertId = database.insert(Database.TABLE_LIBRO, null, values);
@@ -85,20 +85,20 @@ public class Libro {
 
     //Método para actualizar contactos a partir de los datos pasados por EditActivity
     public void actualizarLibro(long id, String nombre, String tipo, String editorial, String anio, String autor, String estado, String prestamo, String devolucion, String stock) {
-        ContentValues dataToInsert = new ContentValues();
-        dataToInsert.put(Database.LIBRO_NOMBRE, nombre);
-        dataToInsert.put(Database.LIBRO_TIPO, nombre);
-        dataToInsert.put(Database.LIBRO_EDITORIAL, nombre);
-        dataToInsert.put(Database.LIBRO_ANIO, nombre);
-        dataToInsert.put(Database.LIBRO_AUTOR, nombre);
-        dataToInsert.put(Database.LIBRO_ESTADO, nombre);
-        dataToInsert.put(Database.LIBRO_PRESTAMO, nombre);
-        dataToInsert.put(Database.LIBRO_DEVOLUCION, nombre);
-        dataToInsert.put(Database.LIBRO_STOCK, nombre);
+        ContentValues values = new ContentValues();
+        values.put(Database.LIBRO_NOMBRE, nombre);
+        values.put(Database.LIBRO_TIPO, tipo);
+        values.put(Database.LIBRO_EDITORIAL, editorial);
+        values.put(Database.LIBRO_ANIO, anio);
+        values.put(Database.LIBRO_AUTOR, autor);
+        values.put(Database.LIBRO_ESTADO, estado);
+        values.put(Database.LIBRO_PRESTAMO, prestamo);
+        values.put(Database.LIBRO_DEVOLUCION, devolucion);
+        values.put(Database.LIBRO_STOCK, Integer.parseInt(stock));
         String where = Database.LIBRO_ID + "=?";
         String[] whereArgs = new String[] {String.valueOf(id)};
 
-        database.update(Database.TABLE_LIBRO, dataToInsert, where, whereArgs);
+        database.update(Database.TABLE_LIBRO, values, where, whereArgs);
     }
 
     public void borrarLibro(long id) {

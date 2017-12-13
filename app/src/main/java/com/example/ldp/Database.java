@@ -41,7 +41,7 @@ public class Database extends SQLiteOpenHelper {
             + LIBRO_ESTADO + " text not null,"
             + LIBRO_PRESTAMO + " text not null,"
             + LIBRO_DEVOLUCION + " text not null,"
-            + LIBRO_STOCK + " text not null"
+            + LIBRO_STOCK + " integer not null"
             + ");";
 
     private static final String AUTOR_CREATE_TABLE = "create table "
